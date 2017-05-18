@@ -1,0 +1,58 @@
+<div class='cont'>
+  <table class='table'>
+    <thead>
+      <tr>
+        <th>Names</th>
+        <th>Last Names</th>
+        <th>Email</th>
+        <th>Ocupation</th>
+        <th>Birth Year</th>
+        <th>State</th>
+        <th>City</th>
+        <th>Address</th>
+        <th>Visit Profile</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @users.each do |user| %>
+      <tr>
+        <td>
+          <%=  user["names"] %>
+        </td>
+        <td>
+          <%=  user["last_names"] %>
+        </td>
+        <td>
+          <%=  user["email"] %>
+        </td>
+        <td>
+          <%=  user["ocupation"] %>
+        </td>
+        <td>
+          <%=  user["birth_year"] %>
+        </td>
+         <td>
+          <%=  user["state"] %>
+        </td>
+        <td>
+          <%=  user["city"] %>
+        </td>
+        <td>
+          <%=  user["address"] %>
+        </td>
+        <td>
+          <%= link_to user_path(user['id']) do%>
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          <% end%>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <%= form_tag root_path do %>
+    <%= hidden_field_tag "csv", true %>
+    <%= submit_tag "Generate CSV file", class: "btn" %>
+  <% end %>
+</div>
+
+
